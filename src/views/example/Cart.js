@@ -2,35 +2,41 @@ import React from "react";
 
 class Cart extends React.Component {
 
-    state = {
-        hoten:'tuasdsn anh',
-        namsinh:'2004'
-    }
-    HandelOnchange = (event) => {
+  state ={
+    firstName :'',
+    lastName : ''
+  }
+  handelFirstName = (event) => {
         this.setState({
-            hoten : event.target.value
+            firstName : event.target.value
         })
-    }
-
-    click =() =>{
-        alert("tuan anh");
-    }
+  }
+  handelLastName = (event)=>{
+    this.setState({
+        lastName : event.target.value
+    })
+  }
+  handel = (event) =>{
+    event.preventDefault();
+   console.log("check data" ,this.state);
+  }
     render () {
         return (
             <>
-
-            <div>
-            <input value={this.state.hoten} type="text"  onChange={(event)=>{
-                this.HandelOnchange(event)
-            }}   />
-                ho ten la {this.state.hoten}
-            </div>
-            <div className="go">
-            ho ten la {this.state.namsinh}
-            </div>
-            <div className="3">
-                <button onClick={()=>this.click()} >clickme</button>
-            </div>
+       
+                <form>
+                    <label >FirstName</label> 
+                    <input type="text" 
+                            value={this.state.firstName}  
+                            onChange={(event) => this.handelFirstName(event)}
+                     /><br/>
+                    <label >LastName</label>
+                    <input type="text" 
+                    value={this.state.lastName} 
+                    onChange={(event) => this.handelLastName(event)} /><br/>
+                    <button type="button"  onClick={(event) => this.handel(event)}>gui</button>
+                </form>
+           
             </>
         )
     }
